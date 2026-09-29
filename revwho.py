@@ -1,5 +1,3 @@
-print("test")
-
 import requests
 import urllib.parse
 import sys
