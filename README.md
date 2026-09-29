@@ -60,9 +60,12 @@ The script performs the following operations:
 
 This project is intended strictly for educational purposes, security research, and authorized OSINT investigations. Users are responsible for complying with all applicable local, state, and federal laws. The author assumes no liability for misuse or damage caused by this program.
 
-Use for Good Purposes!!
 ---
 
 ## License
 
 Distributed under the MIT License. See LICENSE for more information.
+
+---
+
+Use for Good Purposes!!
