@@ -1,0 +1,59 @@
+import requests
+import urllib.parse
+import sys
+import re
+
+banner = r"""
+ (                                  )      )   
+ )\ )                  (  (      ( /(   ( /(   
+(()/(   (     (   (    )\))(   ' )\())  )\())  
+ /(_))  )\    )\  )\  ((_)()\ ) ((_)\  ((_)\   
+(_))   ((_)  ((_)((_) _(())\_)() _((_)   ((_)  
+| _ \  | __| \ \ / /  \ \((_)/ /| || |  / _ \  
+|   /  | _|   \ V /    \ \/\/ / | __ | | (_) | 
+|_|_\  |___|   \_/      \_/\_/  |_||_|  \___/  
+                                               
+"""
+
+usage = """Usage:
+  python3 revwho.py
+
+  Type the company name when prompted (ex: Google LLC).
+  The tool prints the domains found for that name using ViewDNS reverse whois.
+"""
+
+print(banner)
+print(usage)
+
+try:
+    companyname = input('Enter the company name or company email.\n')
+except (KeyboardInterrupt, EOFError):
+    print('\n[!] Cancelled by user.')
+    sys.exit(1)
+
+try:
+    encodecompany = urllib.parse.quote(companyname)
+    if encodecompany:
+        headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0'}
+        res = requests.get(f'https://viewdns.info/reversewhois/?q={encodecompany}',headers=headers)
+        regex = re.findall(r"text-gray-100\">[^<]*</td>",res.text)
+        if regex:
+            for i in regex:
+               regexdomain = re.sub(r"text-gray-100\">","",i)
+               regexfinal = re.sub(r"</td>","",regexdomain)
+               print(regexfinal)
+except requests.exceptions.ConnectionError:
+    print('[!] Connection error. Check your internet connection.')
+    sys.exit(1)
+except requests.exceptions.Timeout:
+    print('[!] The request timed out.')
+    sys.exit(1)
+except requests.exceptions.RequestException as e:
+    print(f'[!] Request error: {e}')
+    sys.exit(1)
+except KeyboardInterrupt:
+    print('\n[!] Cancelled by user.')
+    sys.exit(1)
+except Exception as e:
+    print(f'[!] Unexpected error: {e}')
+    sys.exit(1)
