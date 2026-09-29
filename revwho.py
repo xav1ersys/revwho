@@ -26,7 +26,7 @@ print(banner)
 print(usage)
 
 try:
-    companyname = input('Enter the company name or company email. \n')
+    companyname = input('Enter the company name or company email.\n')
 except (KeyboardInterrupt, EOFError):
     print('\n[!] Cancelled by user.')
     sys.exit(1)
