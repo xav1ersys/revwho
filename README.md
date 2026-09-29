@@ -25,7 +25,7 @@ RevWho is a Python-based Open Source Intelligence (OSINT) tool designed to strea
 ## Installation
 
 1. Clone the Repository:
-   git clone https://github.com/your-username/revwho.git
+   git clone https://github.com/xav1ersys/revwho.git
    cd revwho
 
 2. Install Dependencies:
