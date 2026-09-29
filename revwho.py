@@ -57,5 +57,3 @@ except KeyboardInterrupt:
 except Exception as e:
     print(f'[!] Unexpected error: {e}')
     sys.exit(1)
-
-print("test")
