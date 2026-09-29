@@ -2,6 +2,8 @@
 
 RevWho is a Python-based Open Source Intelligence (OSINT) tool designed to streamline reverse WHOIS lookups. By querying ViewDNS.info, it identifies and extracts all domain names associated with a specific company name or administrative email address.
 
+<img width="876" height="405" alt="image" src="https://github.com/user-attachments/assets/0ac9aacd-62e2-4fe7-a513-8047ba891c91" />
+
 ---
 
 ## Features
